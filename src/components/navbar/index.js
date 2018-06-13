@@ -11,13 +11,16 @@ export default () => {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
-                        <Link to="/" className="nav-link">Main</Link>
+                        <Link to="/" className="nav-link">Home</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/signup" className="nav-link">Sign up</Link>
+                        <Link to="/about" className="nav-link">About</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/signin" className="nav-link">Sign in</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/signup" className="nav-link">Sign up</Link>
                     </li>
                 </ul>
             </div>
