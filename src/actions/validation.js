@@ -17,9 +17,11 @@ export function validateUser(data) {
     if (Validator.isEmpty(data.passwordConfirmation)) {
         errors.passwordConfirmation = 'This fileld is required';
     }
-    if (Validator.equals(data.password, data.passwordConfirmation)) {
+    if (!Validator.equals(data.passwordConfirmation, data.password)) {
         errors.passwordConfirmation = 'Password does not match';
     }
+
+    console.log('%c errors, isValid', 'color: orange', errors, _.isEmpty(errors));
 
     return {
         errors,

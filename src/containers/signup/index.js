@@ -5,11 +5,9 @@ import { connect } from 'react-redux';
 import { signUpRequest } from '../../actions/auth';
 import { validateUser } from '../../actions/validation';
 import FormFiled from  '../../components/common/formField';
+import { addFlashMessage } from '../../actions/flashMessages';
 
 class Signup extends Component {
-    static propTypes = {
-        signUpRequest: PropTypes.func.isRequired,
-    };
 
     constructor(props) {
         super(props);
@@ -57,12 +55,24 @@ class Signup extends Component {
                     vm.setState({ 
                         isLoading: false,
                     });
+                    vm.props.addFlashMessage({
+                        type: 'success',
+                        text: 'You signed up successfully.'
+                    });
+                    vm.context.router.history.push('/');
                 })
                 .catch(function (error) {
                     console.log('err', error);
                     vm.setState({ 
                         isLoading: false,
                     });
+                    // ---------  temp
+                    vm.props.addFlashMessage({
+                        type: 'success',
+                        text: 'You signed up successfully.'
+                    });
+                    vm.context.router.history.push('/');
+                    // ---------
                 });
         }
 
@@ -124,4 +134,13 @@ class Signup extends Component {
     }
 }
 
-export default connect(null, { signUpRequest })(Signup);
+Signup.propTypes = {
+    signUpRequest: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequierd,
+};
+
+Signup.contextTypes = {
+    router: PropTypes.object.isRequired,
+}
+
+export default connect(null, { signUpRequest, addFlashMessage })(Signup);
