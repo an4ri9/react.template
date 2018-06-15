@@ -1,13 +1,37 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { addFlashMessage } from '../../actions/flashMessages';
+import { connect } from 'react-redux';
 
 class Main extends Component {
-  render() {
-    return (
-      <div className="signin-container">
-        This is main
-      </div>
-    );
-  }
+
+	constructor(props) {
+		super(props);
+
+		this.activate = this.activate.bind(this);
+	}
+
+	activate () {
+		this.props.addFlashMessage({
+			type: 'success',
+			text: 'Welcome on main page.'
+		});
+	}
+
+	render() {
+		this.activate();
+		return (
+			<div className="row">
+				<div className="jumbotron">
+					<h1 className="display-4">Hello! This is main page.</h1>
+				</div>
+			</div>
+		);
+	}
 }
 
-export default Main;
+Main.propTypes = {
+	addFlashMessage: PropTypes.func.isRequired,
+};
+
+export default connect(null, { addFlashMessage })(Main);

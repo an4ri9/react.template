@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { signUpRequest } from '../../actions/auth';
-import { validateUser } from '../../actions/validation';
+import { signInRequest } from '../../actions/auth';
+import { validateLogin } from '../../actions/validation';
 import FormFiled from  '../../components/common/formField';
 import { addFlashMessage } from '../../actions/flashMessages';
 
-class Signup extends Component {
+class Signin extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
             email: '',
             password: '',
-            passwordConfirmation: '',
             errors: {},
             isLoading: false,
         }
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.isValid = this.isValid.bind(this);
     }
 
     onChange(e) {
@@ -31,7 +28,8 @@ class Signup extends Component {
     }
 
     isValid() {
-        const { errors, isValid } = validateUser( this.state );
+        const { email, password } = this.state;
+        const { errors, isValid } = validateLogin( {email, password} );
 
         if ( !isValid ) {
             this.setState({ errors });
@@ -42,13 +40,14 @@ class Signup extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        let vm = this;
+        const { email, password } = this.state;
+        const vm = this;
         if (this.isValid()) {
             this.setState({ 
                 errors: { },
                 isLoading: true,
             });
-            this.props.signUpRequest(this.state)
+            this.props.signInRequest({ email, password})
                 .then(function (response) {
                     console.log(response);
                     vm.setState({ 
@@ -56,7 +55,7 @@ class Signup extends Component {
                     });
                     vm.props.addFlashMessage({
                         type: 'success',
-                        text: 'You signed up successfully.'
+                        text: 'You signed in successfully.'
                     });
                     vm.context.router.history.push('/');
                 })
@@ -68,7 +67,7 @@ class Signup extends Component {
                     // ---------  temp
                     vm.props.addFlashMessage({
                         type: 'faild',
-                        text: 'You signed up successfully.'
+                        text: 'You signed in successfully.'
                     });
                     vm.context.router.history.push('/');
                     // ---------
@@ -85,17 +84,8 @@ class Signup extends Component {
             <div className="row">
                 <div className="col-md-4 offset-md-4">
                     <form onSubmit={this.onSubmit}>
-                        <h1>Sign up</h1>
 
-                        <FormFiled 
-                            label="Name"
-                            value={this.state.username}
-                            onChange={this.onChange}
-                            type="text"
-                            field="username"
-                            placeholder="Enter name"
-                            error={errors.username}
-                        />
+                        <h1>Sign in</h1>
 
                         <FormFiled 
                             label="Email address"
@@ -117,16 +107,6 @@ class Signup extends Component {
                             error={errors.password}
                         />
 
-                        <FormFiled 
-                            label="Password Confirmation"
-                            value={this.state.passwordConfirmation}
-                            onChange={this.onChange}
-                            type="password"
-                            field="passwordConfirmation"
-                            placeholder="Enter password one more time"
-                            error={errors.passwordConfirmation}
-                        />
-
                         <button type="submit" disabled={isLoading} className="btn btn-primary">Submit</button>
                     </form>
                 </div>
@@ -135,13 +115,13 @@ class Signup extends Component {
     }
 }
 
-Signup.propTypes = {
-    signUpRequest: PropTypes.func.isRequired,
+Signin.propTypes = {
+    signInRequest: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired,
 };
 
-Signup.contextTypes = {
+Signin.contextTypes = {
     router: PropTypes.object.isRequired,
 }
 
-export default connect(null, { signUpRequest, addFlashMessage })(Signup);
+export default connect(null, { signInRequest, addFlashMessage })(Signin);
