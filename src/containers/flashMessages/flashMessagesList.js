@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import FlashMessage from './flashMessage';
 import { deleteFlashMessage } from '../../actions/flashMessages';
+import '../flashMessages/flashMessages.css';
 
 
 class FlashMessagesList extends Component {
@@ -11,7 +12,7 @@ class FlashMessagesList extends Component {
 			<FlashMessage key={message.id} message={message} deleteFlashMessage={ this.props.deleteFlashMessage }/>
 		);
 		return (
-			<div>
+			<div className="flash-messages-list">
 				{messages}
 			</div>
 		);

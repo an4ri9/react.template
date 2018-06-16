@@ -1,8 +1,14 @@
 import axios from 'axios';
+import { URLS } from '../constant';
 
 export function signUpRequest(userData) {
     return dispatch => {
-        return axios.post('/api/signup', userData);
+        return axios({
+            method: 'post',
+            url: URLS.AUTH.SIGNUP,
+            data: userData,
+            baseURL: URLS.API,
+        });
     }
 }
 

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { signUpRequest } from '../../actions/auth';
-import { validateUser } from '../../actions/validation';
+import { signUpRequest } from '../../services/auth';
+import { validateUser } from '../../services/validation';
 import FormFiled from  '../../components/common/formField';
 import { addFlashMessage } from '../../actions/flashMessages';
+import { handleRequestErrors, handleRequestSuccess } from '../../services/handleEvents';
 
 class Signup extends Component {
 
@@ -50,28 +51,17 @@ class Signup extends Component {
             });
             this.props.signUpRequest(this.state)
                 .then(function (response) {
-                    console.log(response);
                     vm.setState({ 
                         isLoading: false,
                     });
-                    vm.props.addFlashMessage({
-                        type: 'success',
-                        text: 'You signed up successfully.'
-                    });
+                    handleRequestSuccess('You signed up successfully');
                     vm.context.router.history.push('/');
                 })
                 .catch(function (error) {
-                    console.log('err', error);
                     vm.setState({ 
                         isLoading: false,
                     });
-                    // ---------  temp
-                    vm.props.addFlashMessage({
-                        type: 'faild',
-                        text: 'You signed up successfully.'
-                    });
-                    vm.context.router.history.push('/');
-                    // ---------
+                    handleRequestErrors(error);
                 });
         }
 

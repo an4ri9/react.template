@@ -12,10 +12,7 @@ class Main extends Component {
 	}
 
 	activate () {
-		this.props.addFlashMessage({
-			type: 'success',
-			text: 'Welcome on main page.'
-		});
+		
 	}
 
 	render() {

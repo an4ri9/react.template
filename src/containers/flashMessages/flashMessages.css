@@ -1,0 +1,11 @@
+.flash-messages-list{
+    z-index: 20;
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+}
+
+.flash-message{
+    display: block;
+    width: 400px;
+}

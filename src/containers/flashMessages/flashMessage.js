@@ -16,8 +16,8 @@ class FlashMessage extends Component {
 	render() {
 		const { id, type, text } = this.props.message;
 		return (
-            <div className="row">
-                <div className={'alert' + (type === 'sucess') ? 'alert-success' : 'alert-danger'}>
+            <div className="row flash-message">
+                <div className={(type === 'success') ? 'alert alert-success' : 'alert alert-danger'}>
                     {text}
                     <button onClick={this.onClose} className="close">
                         <span>

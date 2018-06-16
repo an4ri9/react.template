@@ -7,6 +7,9 @@ import Signin from '../signin';
 import Navbar from '../../components/navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FlashMassagesList from '../../containers/flashMessages/flashMessagesList';
+import * as jquery from 'jquery/dist/jquery.js';
+import * as popper from 'popper.js/dist/popper.js';
+import * as bootstrap from 'bootstrap/dist/js/bootstrap.js';
 
 const App = () => (
 	<div>

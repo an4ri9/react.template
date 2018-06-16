@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { signInRequest } from '../../actions/auth';
-import { validateLogin } from '../../actions/validation';
+import { signInRequest } from '../../services/auth';
+import { validateLogin } from '../../services/validation';
 import FormFiled from  '../../components/common/formField';
 import { addFlashMessage } from '../../actions/flashMessages';
 
