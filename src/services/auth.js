@@ -14,6 +14,11 @@ export function signUpRequest(userData) {
 
 export function signInRequest(userData) {
     return dispatch => {
-        return axios.post('/api/signin', userData);
+        return axios({
+            method: 'post',
+            url: URLS.AUTH.SIGNIN,
+            data: userData,
+            baseURL: URLS.API,
+        });
     }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class FlashMessage extends Component {
@@ -14,7 +13,7 @@ class FlashMessage extends Component {
     }
 
 	render() {
-		const { id, type, text } = this.props.message;
+		const { type, text } = this.props.message;
 		return (
             <div className="row flash-message">
                 <div className={(type === 'success') ? 'alert alert-success' : 'alert alert-danger'}>

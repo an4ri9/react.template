@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Home from '../home';
 import About from '../about';
 import Signup from '../signup';
@@ -7,9 +7,9 @@ import Signin from '../signin';
 import Navbar from '../../components/navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FlashMassagesList from '../../containers/flashMessages/flashMessagesList';
-import * as jquery from 'jquery/dist/jquery.js';
-import * as popper from 'popper.js/dist/popper.js';
-import * as bootstrap from 'bootstrap/dist/js/bootstrap.js';
+import 'jquery/dist/jquery.js';
+import 'popper.js/dist/popper.js';
+import 'bootstrap/dist/js/bootstrap.js';
 
 const App = () => (
 	<div>
