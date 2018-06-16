@@ -4,8 +4,12 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import store, { history } from './store';
 import App from './containers/app';
+import './index.css';
+import setAuthToken from './services/setAuthToken';
+import { setCurrentUserFromToken } from './services/auth';
 
-import './index.css'
+setAuthToken(localStorage.token);
+setCurrentUserFromToken();
 
 const target = document.querySelector('#root');
 

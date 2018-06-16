@@ -50,7 +50,7 @@ class Signin extends Component {
             });
             this.props.signInRequest({ email, password})
                 .then(function (response) {
-                    console.log(response);
+                    console.log('this', response);
                     vm.setState({ 
                         isLoading: false,
                     });
