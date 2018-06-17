@@ -4,7 +4,7 @@ import Home from '../home';
 import About from '../about';
 import Signup from '../signup';
 import Signin from '../signin';
-import Navbar from '../../components/navbar';
+import Navbar from '../navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FlashMassagesList from '../../containers/flashMessages/flashMessagesList';
 import 'jquery/dist/jquery.js';

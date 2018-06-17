@@ -2,6 +2,8 @@ import { store } from '../store';
 import { addFlashMessage, deleteFlashMessage } from '../actions/flashMessages';
 import _ from 'lodash';
 
+const self = require('./handleEvents');
+
 export function handleRequestErrors (error) {
     let errMessage = '';
     if (error.response && error.response.data && error.response.data.message) {
@@ -14,7 +16,6 @@ export function handleRequestErrors (error) {
         text: errMessage
     }));
 
-    const self = require('./handleEvents');
     self.autoCloseFlashMessage(errMessage);
 }
 
@@ -24,7 +25,6 @@ export function handleRequestSuccess ( message ) {
         text: message
     }));
 
-    const self = require('./handleEvents');
     self.autoCloseFlashMessage(message);
 }
 

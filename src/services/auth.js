@@ -4,7 +4,7 @@ import { URLS } from '../constant';
 import jwt from 'jsonwebtoken';
 import { setCurrentUser } from '../actions/userActions';
 
-const self = './auth';
+const self = require('./auth.js');
 
 export function signUpRequest(userData) {
     return dispatch => {
@@ -35,5 +35,12 @@ export function signInRequest(userData) {
 export function setCurrentUserFromToken () {
     if (localStorage.token) {
         store.dispatch(setCurrentUser(jwt.decode(localStorage.token)));
+    }
+}
+
+export function logout () {
+    return dispatch => {
+        localStorage.removeItem('token');
+        dispatch(setCurrentUser({}));
     }
 }
