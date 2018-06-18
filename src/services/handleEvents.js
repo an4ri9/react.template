@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 const self = require('./handleEvents');
 
-export function handleRequestErrors (error) {
+export function handleErrors (error) {
     let errMessage = '';
     if (error.response && error.response.data && error.response.data.message) {
         errMessage = error.response.data.message;
@@ -19,7 +19,7 @@ export function handleRequestErrors (error) {
     self.autoCloseFlashMessage(errMessage);
 }
 
-export function handleRequestSuccess ( message ) {
+export function handleSuccess ( message ) {
     store.dispatch(addFlashMessage({
         type: 'success',
         text: message

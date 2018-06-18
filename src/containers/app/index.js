@@ -10,13 +10,14 @@ import FlashMassagesList from '../../containers/flashMessages/flashMessagesList'
 import 'jquery/dist/jquery.js';
 import 'popper.js/dist/popper.js';
 import 'bootstrap/dist/js/bootstrap.js';
+import requireAuth from '../../services/requireAuth';
 
 const App = () => (
 	<div>
 		<Navbar />
 		<div className="container">
 			<FlashMassagesList />
-			<Route exact path="/" component={Home} />
+			<Route exact path="/" component={requireAuth(Home)} />
 			<Route exact path="/about" component={About} />
 			<Route exact path="/signup" component={Signup} />
 			<Route exact path="/signin" component={Signin} />

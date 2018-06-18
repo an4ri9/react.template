@@ -5,7 +5,7 @@ import { signUpRequest } from '../../services/auth';
 import { validateUser } from '../../services/validation';
 import FormFiled from  '../../components/common/formField';
 import { addFlashMessage } from '../../actions/flashMessages';
-import { handleRequestErrors, handleRequestSuccess } from '../../services/handleEvents';
+import { handleErrors, handleSuccess } from '../../services/handleEvents';
 
 class Signup extends Component {
 
@@ -54,14 +54,14 @@ class Signup extends Component {
                     vm.setState({ 
                         isLoading: false,
                     });
-                    handleRequestSuccess('You signed up successfully');
+                    handleSuccess('You signed up successfully');
                     vm.context.router.history.push('/signin');
                 })
                 .catch(function (error) {
                     vm.setState({ 
                         isLoading: false,
                     });
-                    handleRequestErrors(error);
+                    handleErrors(error);
                 });
         }
 
