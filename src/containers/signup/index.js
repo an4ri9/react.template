@@ -55,7 +55,7 @@ class Signup extends Component {
                         isLoading: false,
                     });
                     handleRequestSuccess('You signed up successfully');
-                    vm.context.router.history.push('/');
+                    vm.context.router.history.push('/signin');
                 })
                 .catch(function (error) {
                     vm.setState({ 

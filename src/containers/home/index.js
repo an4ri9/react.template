@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addFlashMessage } from '../../actions/flashMessages';
 import { connect } from 'react-redux';
+import { exampleRequest } from '../../services/example';
 
 class Main extends Component {
 
@@ -12,7 +13,8 @@ class Main extends Component {
 	}
 
 	activate () {
-		
+		console.log('%c localStorage.token', 'color: orange', localStorage.token);
+		this.props.exampleRequest();
 	}
 
 	render() {
@@ -29,6 +31,7 @@ class Main extends Component {
 
 Main.propTypes = {
 	addFlashMessage: PropTypes.func.isRequired,
+	exampleRequest: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addFlashMessage })(Main);
+export default connect(null, { addFlashMessage, exampleRequest })(Main);

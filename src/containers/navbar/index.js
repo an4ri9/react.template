@@ -11,7 +11,7 @@ class Navbar extends Component {
     }
 
     render () {
-        const { isAuthentificated } = this.props.auth;
+        const { isAuthenticated } = this.props.auth;
         const userLinks = (
             <ul className="navbar-nav">
                 <li className="nav-item active">
@@ -43,7 +43,7 @@ class Navbar extends Component {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    { isAuthentificated ? userLinks : guestLinks}
+                    { isAuthenticated ? userLinks : guestLinks}
                 </div>
             </nav>
         );
