@@ -6,7 +6,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "history": "^4.7.2",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "popper.js": "^1.14.3",
@@ -23,12 +23,16 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.8",
-    "validator": "^10.3.0"
+    "validator": "^10.3.0",
+    "snyk": "^1.316.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
